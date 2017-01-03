@@ -2,45 +2,6 @@ class Student(object):
     def __init__(self, name):
         self.name = name
     def __str__(self):
-<<<<<<< HEAD
-        return 'Student Object (name: %s)' % self.name
-    __repr__ = __str__
-
-
-s = Student('LYL')
-s
-print(Student('LXL'))
-
-#如果一个class想被用于for...in循环，类似list或tuple那样，那必须实现一个__iter__()方法，该方法返回一个迭代对象，然后Python的for循环就会不断的调用该迭代对象的__next__()方法拿到循环的下一个值，直到遇到stopIteration错误时退出循环
-class Fib(object):
-    def __init__(self):
-        self.a, self.b = 0, 1
-
-    def __iter__(self):
-        return self #实例本身就是迭代对象，故返回自己
-
-    def __next__(self):
-        self.a, self.b = self.b, self.a + self.b
-        if self.a > 100000:  #这是退出循环的条件
-            raise StopIteration()
-        return self.a
-
-for n in Fib():
-    print(n)
-
-#让class表现的像list那样照下标取出元素，需要实现__getitem__()方法
-
-class Fib2(object):
-    def __getitem__(self, n):
-        if isinstance(n, int):
-            a, b = 1, 1
-            for x in range(n):
-                a, b = b, a + b
-            return a
-        if isinstance(n, slice):
-            start = n.start
-            stop = n.stop
-=======
         return 'Student Obkect (name: %s)' % self.name
     __repr__ = __str__
 print(Student('LXL'))
@@ -88,38 +49,11 @@ class Fib3(object):
         if isinstance(item, slice): #如果是一个切片类型
             start = item.start
             stop = item.stop
->>>>>>> 4701e7805bb9517bc21998c9fc81185a9771c3ed
             if start is None:
                 start = 0
             a, b = 1, 1
             L = []
             for x in range(stop):
-<<<<<<< HEAD
-                if x >= start:
-                    L.append(a)
-                a, b = b, a + b
-            return L
-
-
-#这样的话就可以按下标访问任何一项了
-f = Fib2()
-print(f[0:5])
-
-#改造之后Fib2也能切片了
-
-
-#__getattr__方法  正常情况下如果我们调用类的方法或属性时，如果不存在，就会报错，比如定义一个car类
-class Car(object):
-    def __init__(self):
-        self.name = 'BMW'
-    def __getattr__(self, item):
-        if item == 'price':
-            return 'I dont konw'
-c = Car()
-print(c.name)
-#当调用有的属性时是没问题的
-print(c.price) #调用不存在的属性时就会报错了
-=======
                 L.append(a)
                 a, b = b, a + b
             return L
@@ -173,4 +107,3 @@ s5()  #这样定义的话就可以直接调用实例本身
 
 #如何去判断一个对象是函数还是对象呢，可以通过callable方法来判定，能被调用就是一个callable对象。通过callable对象我们就能判定对象是不是可调用的对象
 print(callable([1,2,3,4]))
->>>>>>> 4701e7805bb9517bc21998c9fc81185a9771c3ed
