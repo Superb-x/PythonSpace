@@ -25,7 +25,7 @@ for x in Fib():
     print(x)
 
 
-#如果想实现切片的功能,那么需要定义__getitem__方法
+#如果想实现像list、tuple那样的功能,那么需要定义__getitem__方法
 class Fib2(object):
     def __getitem__(self, item):
         a, b = 1, 1
@@ -34,6 +34,30 @@ class Fib2(object):
         return a
 
 #处理之后就能按下标访问任意一项了、
-f = Fib2()
+f2 = Fib2()
 for x in range(21):
-    print(f[x])
+    print(f2[x])
+
+#如果想实现切片的功能
+class Fib3(object):
+    def __getitem__(self, item):
+        if isinstance(item, int): #判断如果是一个整数类型
+            a, b = 1, 1
+            for x in range(item):
+                a, b = b, a + b
+            return a
+        if isinstance(item, slice): #如果是一个切片类型
+            start = item.start
+            stop = item.stop
+            if start is None:
+                start = 0
+            a, b = 1, 1
+            L = []
+            for x in range(stop):
+                L.append(a)
+                a, b = b, a + b
+            return L
+
+#照这样处理之后就可以对class进行切片操作了
+f3 = Fib3()
+print(f3[0:5])
