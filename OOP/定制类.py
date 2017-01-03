@@ -23,3 +23,17 @@ class Fib(object):
 
 for x in Fib():
     print(x)
+
+
+#如果想实现切片的功能,那么需要定义__getitem__方法
+class Fib2(object):
+    def __getitem__(self, item):
+        a, b = 1, 1
+        for x in range(item):
+            a, b = b, a + b
+        return a
+
+#处理之后就能按下标访问任意一项了、
+f = Fib2()
+for x in range(21):
+    print(f[x])
