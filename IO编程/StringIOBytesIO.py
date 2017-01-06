@@ -17,4 +17,8 @@ while True:
     print(s.strip())
 
 #StringIO只能操作str，要操作二进制数就只能靠BytesIO了
+from io import BytesIO
+f3 = BytesIO()
+f3.write('中文'.encode('utf-8'))
+print(f3.getvalue())
 
