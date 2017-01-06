@@ -22,3 +22,7 @@ f3 = BytesIO()
 f3.write('中文'.encode('utf-8'))
 print(f3.getvalue())
 
+f4 = BytesIO(b'\xe4\xb8\xad\xe6\x96\x87')
+f4.read()
+print(f4.read())
+
