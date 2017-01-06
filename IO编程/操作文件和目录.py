@@ -1,1 +1,2 @@
-'''something interesting'''
+import os
+print(os.name)
