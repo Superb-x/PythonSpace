@@ -34,3 +34,5 @@ w.close()
 
 with open('test.txt', 'w') as w2:
     w2.write('hello,Python\nyou are the most beautiful language\n测试中文编码')
+
+#测试pycharm
