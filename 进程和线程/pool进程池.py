@@ -12,7 +12,7 @@ def long_time_task(name):
 
 if __name__ == '__main__':
     print('Parent process %s' % os.getpid())
-    p = Pool(4)
+    p = Pool(4) #Pool的默认大小就是CPU的核心数
     for i in range(5):
         p.apply_async(long_time_task, args=(i,))
     print('Wating for all subprocess done...')
