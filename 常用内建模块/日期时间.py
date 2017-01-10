@@ -23,3 +23,9 @@ print(datetime.utcfromtimestamp(t))
 #str转换成datetime
 curDay = datetime.strptime('2017-1-10 14:39:45', '%Y-%m-%d %H:%M:%S')
 print(curDay)
+
+#datetime转换成str
+cur = datetime.now()
+print(cur.strftime('%a, %b %d %H:%M'))
+
+#datetime加减
