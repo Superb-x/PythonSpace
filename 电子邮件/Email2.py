@@ -29,7 +29,15 @@ from_addr = '172564615@qq.com'
 passwd = 'isykoqzfmwoibieh'
 
 # 接收参数: 收件人地址,可多个
-to_addrs = ['943572695@qq.com', 'nearwind_x@163.com', 'nearwindx@gmail.com', '173466178@qq.com']
+to_addrs = [
+    '943572695@qq.com',
+    'nearwind_x@163.com',
+    'nearwindx@gmail.com',
+    '173466178@qq.com',
+    '575385737@qq.com',
+    '787958522@qq.com',
+    '649360776@qq.com'
+]
 
 # 接收参数: SMTP服务器(注意:是发件人的smtp服务器)
 smtp_server = 'smtp.qq.com'
