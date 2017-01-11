@@ -15,4 +15,7 @@
 #struct的pack()函数可以把任意数据变成bytes
 import struct, sys
 print(struct.pack('>I', 10240099))
+f = open('test.bmp', 'rb')
+print(struct.unpack('ccIIIIIIHH', f.read()))
+
 
