@@ -9,7 +9,7 @@ async def index(request):
 async def hello(request):
     await asyncio.sleep(0.5)
     text = '<h1>hello, %s!</h1>' % request.match_info['name']
-    return web.Response(body=text.encode('utf-8'))
+    return web.Response(body=text.encode('utf-8'), content_type='text/html')
 
 async def init(loop):
     app = web.Application(loop=loop)
