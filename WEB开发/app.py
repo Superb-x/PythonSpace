@@ -17,7 +17,7 @@ def sign_form():
 
 @app.route('/sign', methods=['POST'])
 def signin():
-    #需要从表单读取内容
+    #需要从表单读取内容  test
     if request.form['username'] == 'admin' and request.form['password'] == 'password':
         return '<h1>欢迎来到圣承方略!!!</h1>'
     else:
