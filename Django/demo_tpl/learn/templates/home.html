@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎来到刘祥麟的个人网站</title>
+</head>
+<body>
+    <h1 style="color: #f00;">{{ string }}</h1>
+    <p>教程列表:</p>
+    <ul>
+        {% for i in TutorialList %}
+        <li>{{ i }}</li>
+        {% endfor %}
+    </ul>
+    <h2>【人物】:{{ info_dict.name }} 【籍贯】: {{ info_dict.home }}</h2>
+    <h3>{{ request.user }}, 您好!</h3>
+    <p>当前网站:{{ request.path }}</p>
+    <p>当前参数:{{ request.GET.urlencode }}</p>
+    <div>
+        {% for x in List %}
+            {{ x }}{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>

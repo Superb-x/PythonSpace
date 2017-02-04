@@ -1,0 +1,59 @@
+# -*- coding: utf-8 -*-
+from django.db import models
+import ast
+
+class CompressedTextField(models.TextField):
+    def from_db_value(self, value, expression, connection, context):
+        if not value:
+            return value
+        try:
+            return value.decode('base64').decode('bz2').decode('utf-8')
+        except Exception:
+            return value
+
+    def to_python(self, value):
+        if not value:
+            return value
+        try:
+            value.decode('base64').decode('bz2').decode('utf-8')
+        except Exception:
+            return value
+
+    def get_prev_value(self, value):
+        if not value:
+            return value
+        try:
+            value.decode('base64')
+            return value
+        except Exception:
+            try:
+                return value.decode('utf-8').decode('bz2').decode('base64')
+            except Exception:
+                return value
+
+class ListField(models.TextField):
+    __metaclass__ = models.SubfieldBase
+    description = 'Store a python list'
+
+    def __int__(self, *args, **kw):
+        super(ListField, self).__int__(*args, **kw)
+
+        def to_python(self, value):
+            if not value:
+                value = []
+
+            if isinstance(value, list):
+                return value
+
+            return ast.literal_eval(value)
+
+        def get_prev_value(self, value):
+            if value is None:
+                return value
+
+            return str(value)
+
+        def value_to_string(self, obj):
+            value =  self._get_val_from_obj(obj)
+            return self.get_db_prev_value(value)
+
